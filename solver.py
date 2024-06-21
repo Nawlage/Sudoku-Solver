@@ -42,7 +42,7 @@ def find_empty(board):
     return None
 
 
-def valid(board,num,pos):
+def is_valid(board,num,pos):
     for i in range(len(board[0])):
         if board[pos[0]][i] == num and pos[1] != i:
             return False
@@ -69,7 +69,7 @@ def solve(board):
         row, col = find
         
     for i in range(1,10):
-        if valid(board, i, (row, col)):
+        if is_valid(board, i, (row, col)):
             board[row][col] = i
             
             if solve(board):
