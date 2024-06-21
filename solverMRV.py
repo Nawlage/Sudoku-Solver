@@ -43,7 +43,7 @@ def find_empty(board):
     return None
 
 
-def valid(board,num,pos):
+def is_valid(board,num,pos):
     for i in range(len(board[0])):
         if board[pos[0]][i] == num and pos[1] != i:
             return False
@@ -70,7 +70,7 @@ def find_mrv(board):
             if board[i][j] == 0:
                 options = 0
                 for num in range(1,10):
-                    if valid(board,num,(i,j)):
+                    if is_valid(board,num,(i,j)):
                         options += 1
                 if options < min_options:
                     min_options = options
@@ -86,7 +86,7 @@ def solve(board):
         row, col = find
         
     for i in range(1,10):
-        if valid(board, i, (row, col)):
+        if is_valid(board, i, (row, col)):
             board[row][col] = i
             if solve(board):
                 return True
